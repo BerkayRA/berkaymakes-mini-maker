@@ -2641,8 +2641,10 @@ let edRaf = 0;
 function edDraw() { if (!edRaf) edRaf = requestAnimationFrame(edRender); }
 function edRender() {
   edRaf = 0; const w = ec.clientWidth, h = ec.clientHeight; if (!w || !h) return;
-  const dpr = Math.min(2, devicePixelRatio || 1); if (ec.width !== Math.round(w * dpr)) { ec.width = Math.round(w * dpr); ec.height = Math.round(h * dpr); }
-  const g = ex; g.setTransform(dpr, 0, 0, dpr, 0, 0); g.clearRect(0, 0, w, h); g.imageSmoothingEnabled = false;
+  const dpr = Math.min(3, devicePixelRatio || 1), bw = Math.round(w * dpr), bh = Math.round(h * dpr);
+  if (ec.width !== bw || ec.height !== bh) { ec.width = bw; ec.height = bh; }   // follow height changes too, or the drawing gets squashed
+  const g = ex; g.setTransform(1, 0, 0, 1, 0, 0); g.clearRect(0, 0, ec.width, ec.height);
+  g.setTransform(bw / w, 0, 0, bh / h, 0, 0); g.imageSmoothingEnabled = false;
   const Z = E.Z, ox = E.ox, oy = E.oy;
   // transparent checkerboard
   const ck = Z >= 8 ? Z / 2 : Z >= 4 ? Z : Z * 4;

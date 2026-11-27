@@ -2,7 +2,7 @@
    Serves the saved copy first (instant, works with no signal) and refreshes it in the background,
    so an updated index.html shows up on the launch after next. To push an update at once (the app then
    offers a "Reload" button), also bump VERSION below when you upload new files. */
-const VERSION = 'lmm-2026-11-27-5';
+const VERSION = 'lmm-2026-11-27-6';
 const FILES = ['./', 'index.html', 'three.min.js', 'gallery.enc', 'exporter.enc', 'manifest.webmanifest',
   'apple-touch-icon.png', 'icon-192.png', 'icon-512.png', 'icon-maskable-512.png', 'favicon.png'];
 
